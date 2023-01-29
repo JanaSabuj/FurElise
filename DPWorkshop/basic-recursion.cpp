@@ -92,7 +92,7 @@ int rec(int level) {
 memset(queen, -1, sizeof(queen));
 // Ans = rec(0); [0-N-1] rows,
 
-// 3. { time[i], skill[i] } - maximise skill using X hrs and K slots
+// ------------------------ 3. Skill Maximise Problem - { time[i], skill[i] } - maximise skill using X hrs and K slots
 int t[1001], s[1001];
 int x, k;
 int n; // n workshops
