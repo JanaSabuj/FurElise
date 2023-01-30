@@ -53,6 +53,9 @@ void solve() {
 	for (int i = 0; i < n; i++) {
 		cin >> x[i];
 	}
+	string str;
+	cin >> str;
+	cout << str;
 	memset(dp, -1, sizeof(dp));
 	cout << rec(0, 0) << endl;
 }

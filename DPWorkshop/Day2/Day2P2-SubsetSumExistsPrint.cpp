@@ -1,23 +1,15 @@
 /*
-	For Q queries,
-		Check if subset exists in arr X with sum as Ti,
-		Print the subset
+	Arr: [1, 2, 5, 9]
+	T = 3
+	T = 4
+	T = 16
 
-		N <= 100
-		xi <= 1e4
-		T <= 1e4
+	How to keep track of which item to take or leave ?
 
-Problem with the previous approacH:
-+ TC increases
-+ cant use same DP array multiple times, bcox dp[level][S] depends on Ti bcoz Ti is used in the dp
-+ have to print, and not say 0/1
+	dp(1,16) -1(N.Take)-> dp(2, 16) -1(T)-> dp(3, 14) -1(T)-> dp(4,9) -1(T)-> dp(5,0)
 
-Soln:
-- To reomove dependency of rec func on Ti, we use sum_left as state instead of sum_taken
-- dp[level][sum_taken] -----> dp[level][sum_left] (this is cacheabale across queries)
--
+	Trace the transitions to get the final flow - 1. Recheck 2. Backptr
 
-	TC: O(N*T*Q) drops to O(N*T + Q)
 */
 
 #include <bits/stdc++.h>
@@ -53,8 +45,21 @@ int rec(int level, int time_left) {
 	return dp[level][time_left] = isPoss;
 }
 
+void printset(int level, int time_left) {
+	// basecase
+	if (level == n) return;
+
+	// compute
+	if (rec(level + 1, time_left)) {// dont take
+		printset(level + 1, time_left);
+	} else if (rec(level + 1, time_left - x[level])) {// take
+		cout << x[level] << " ";
+		printset(level + 1, time_left - x[level]);
+	}
+}
+
 void solve() {
-	cin >> n >> T;
+	cin >> n;
 	for (int i = 0; i < n; i++) {
 		cin >> x[i];
 	}
@@ -66,7 +71,12 @@ void solve() {
 	while (q--) {
 		int tt;
 		cin >> tt;
-		cout << rec(0, tt) << endl;
+		if (rec(0, tt)) {
+			printset(0, tt);
+			cout << endl;
+		} else {
+			cout << "No Solution" << endl;
+		}
 	}
 }
 
@@ -85,4 +95,3 @@ int main() {
 
 	return 0;
 }
-
