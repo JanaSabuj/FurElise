@@ -4,7 +4,7 @@
 // ----- General DP format -------
 // x = level
 int dp(int x) {
-	// pruning
+	// pruning - check can sometimes be moved to pruning
 
 	// base case
 

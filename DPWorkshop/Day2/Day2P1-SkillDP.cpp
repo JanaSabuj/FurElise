@@ -21,7 +21,7 @@ int rec(int level, int time_taken, int item_taken) {
 	int maxskill = rec(level + 1, time_taken, item_taken);
 	// choice2: take
 	if (time_taken + t[level] <= x and item_taken + 1 <= k) {
-		maxskill = max(maxskill, s[level] + rec(level + 1, time_taken + 1, item_taken + 1));
+		maxskill = max(maxskill, s[level] + rec(level + 1, time_taken + t[level], item_taken + 1));
 	}
 
 	// save and return
@@ -30,3 +30,4 @@ int rec(int level, int time_taken, int item_taken) {
 
 memset(cache, -1, sizeof(cache));
 // Ans: rec(0, 0, 0)
+

@@ -31,10 +31,11 @@
 	    - in global scope, max size is 1e8 (bcoz created in heap)
 	    - in local scope, in main scope, max size is 2 * 1e6(bcoz created in stack)
 	    - https://stackoverflow.com/questions/32409910/why-on-declaring-an-array-global-in-c-the-size-that-it-can-be-given-is-larger
-	    - dp[less_sz][more_sz] >> dp[more_sz][less_sz] .e, dp[2][10] >> dp[10][2]
+	    - https://www.geeksforgeeks.org/memory-layout-of-c-program/
+	    - dp[less_sz][more_sz] >> dp[more_sz][less_sz] i.e, dp[2][10] >> dp[10][2]
 	    - cache coherence problem
 	    - dp[10][100][1000], also dp[1000000] , also dp[1000][1000]
-	    - a, b, c can be compressed to x = a * 10 ^ 5 + b * 10 ^ 3 + c, then later a, b, c can be retrieved from x
+	    - a, b, c can be compressed to [x = a * 10 ^ 5 + b * 10 ^ 3 + c], then later a, b, c can be retrieved from x
 
 
 
